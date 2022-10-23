@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class TransactionHeader extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'product_image',
-        'product_name',
-        'product_detail',
-        'product_price',
-        'category_id'
+        'transaction_date',
+        'customer_id'
     ];
-
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
 
     public function transactionDetail(){
         return $this->hasMany(TransactionDetail::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }
