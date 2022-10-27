@@ -7,6 +7,12 @@
     <title>Document</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" ></script>
+
+    <link href="{{ asset('css/master.css') }}" rel="stylesheet">
+
+    @yield('style')
+
 </head>
 <body>
 
