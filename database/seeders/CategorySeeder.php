@@ -13,6 +13,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Category::create(['category_name' => 'Beauty']);
     }
 }
