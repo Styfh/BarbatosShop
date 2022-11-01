@@ -13,10 +13,10 @@
                 Categories
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Beauty</a></li>
-                <li><a class="dropdown-item" href="#">Phone</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Camera</a></li>
+                @foreach ($categories as $category)
+                    <li><a class="dropdown-item" href="{{ "/".$category->category_name }}">{{ $category->category_name }}</a></li>
+                @endforeach
+
               </ul>
             </li>
           </ul>
