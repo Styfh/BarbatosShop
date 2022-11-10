@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @extends('components.navbar')
 
+@section('title', 'Login')
+
 @section('style')
 <link href="{{asset('css/login.css')}}" rel="stylesheet">
 @endsection

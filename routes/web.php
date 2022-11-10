@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/login', [UserController::class, 'getLoginPage']);
-Route::get('/register', [UserController::class, 'getRegisterPage']);
+Route::get('/', [NavigationController::class, 'getIndexPage']);
+Route::get('/login', [NavigationController::class, 'getLoginPage']);
+Route::get('/register', [NavigationController::class, 'getRegisterPage']);
