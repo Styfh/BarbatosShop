@@ -41,10 +41,10 @@ class ProductSeeder extends Seeder
 
         Product::create([
             "product_image" => "iphone14_pro_max.jpg",
-            "product_name" => "A4 Business file",
+            "product_name" => "IPhone 14 Pro Max",
             "product_description" => "A single business file of size A4 that comes in red, green, yellow or blue",
             "product_price" => 5000,
-            "category_id" => 7
+            "category_id" => 3
         ]);
 
         Product::create([
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            "product_image" => "lipstick.jpg",
+            "product_image" => "lipstick.jpeg",
             "product_name" => "Matte lipstick",
             "product_description" => "A creamy rich Lipstick formula with high colour payoff in a no-shine matte finish.",
             "product_price" => 200000,
