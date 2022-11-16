@@ -35,6 +35,20 @@ class NavigationController extends Controller
 
     }
 
+    public function getProductPage(Request $request){
+
+        $id = $request->route('product_id');
+
+        $categories = Category::all();
+        $product = Product::where('id', $id)->first();
+
+        return view('product', [
+            'categories' => $categories,
+            'product' => $product
+        ]);
+
+    }
+
     public function getRegisterPage(){
         $categories = Category::all();
 

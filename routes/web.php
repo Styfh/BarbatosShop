@@ -19,3 +19,5 @@ Route::get('/login', [NavigationController::class, 'getLoginPage']);
 Route::get('/register', [NavigationController::class, 'getRegisterPage']);
 
 Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
+
+Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);

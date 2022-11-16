@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
         Product::create([
             "product_image" => "iphone14_pro_max.jpg",
             "product_name" => "IPhone 14 Pro Max",
-            "product_description" => "A single business file of size A4 that comes in red, green, yellow or blue",
+            "product_description" => "The newest model in the iphone line of smartphones, coming with brand new long-awaited features",
             "product_price" => 5000,
             "category_id" => 3
         ]);
