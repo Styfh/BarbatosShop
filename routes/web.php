@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [NavigationController::class, 'getIndexPage']);
 Route::get('/login', [NavigationController::class, 'getLoginPage']);
 Route::get('/register', [NavigationController::class, 'getRegisterPage']);
+
+Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
