@@ -29,10 +29,13 @@
             <a href="category/{{ $category->id }}" style="text-decoration: none">View all</a>
         </div>
         <div class="card-body" style="display: flex; overflow-x: scroll;">
+
+            @php
+                $products = $category->product;
+            @endphp
+
             @foreach ($products as $product)
-                @if($product->category_id == $category->id)
-                    @include('components.product_card')
-                @endif
+                @include('components.product_card')
             @endforeach
         </div>
     </div>
