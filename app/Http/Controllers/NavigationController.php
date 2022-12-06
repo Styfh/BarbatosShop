@@ -11,11 +11,9 @@ class NavigationController extends Controller
 
     public function getIndexPage(){
         $categories = Category::all();
-        $products = Product::all();
 
         return view('home', [
             "categories" => $categories,
-            "products" => $products
         ]);
     }
 
