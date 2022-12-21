@@ -64,13 +64,13 @@ class UserController extends Controller
             if(Auth::attempt($credentials, true)){
                 Cookie::queue('emailcookie', $request->email, 120);
 
-                return redirect('register');
+                return redirect('/');
             }
         }
 
         else {
             if(Auth::attempt($credentials, false)){
-                return redirect('register');
+                return redirect('/');
             }
         }
 
