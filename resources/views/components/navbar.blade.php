@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Barbatos Shop</a>
+      <a class="navbar-brand" href="/">Barbatos Shop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,17 +13,17 @@
                 Categories
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Beauty</a></li>
-                <li><a class="dropdown-item" href="#">Phone</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Camera</a></li>
+                @foreach ($categories as $category)
+                    <li><a class="dropdown-item" href="{{ "/category/".$category->id }}">{{ $category->category_name }}</a></li>
+                @endforeach
+
               </ul>
             </li>
           </ul>
       </div>
       <div class="d-flex">
-          <a href="" class="nav-link mx-2">Login</a>
-          <a href="" class="nav-link mx-2">Register</a>
+          <a href="/login" class="nav-link mx-2">Login</a>
+          <a href="/register" class="nav-link mx-2">Register</a>
 
       </div>
     </div>

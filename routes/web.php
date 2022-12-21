@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\NavigationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [NavigationController::class, 'getIndexPage']);
+Route::get('/login', [NavigationController::class, 'getLoginPage']);
+Route::get('/register', [NavigationController::class, 'getRegisterPage']);
 
-Route::get('/login', [UserController::class, 'getLoginPage']);
-Route::get('/register', [UserController::class, 'getRegisterPage']);
 Route::post('/register/action', [UserController::class, 'actionregister']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
+
+Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);

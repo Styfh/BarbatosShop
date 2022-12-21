@@ -1,0 +1,10 @@
+img{
+    height: 50vh;
+    object-fit: contain;
+}
+
+td{
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    vertical-align: top;
+}
