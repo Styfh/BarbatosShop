@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@extends('components.navbar')
 
 @section('title', 'Home')
 
@@ -8,7 +7,9 @@
 @endsection
 
 @section('main')
+@include('components.navbar')
 <main>
+
 
     <form>
         @csrf

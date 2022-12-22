@@ -1,10 +1,12 @@
 @extends('layouts.master')
-@extends('components.navbar')
 
 @section('title', 'Category')
 
 @section('main')
+@include('components.navbar')
 <main>
+
+
     <div class="card mb-4">
         <div class="card-header">
             {{ $category->category_name }}

@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@extends('components.navbar')
 
 @section('title', 'Product Detail')
 
@@ -8,7 +7,12 @@
 @endsection
 
 @section('main')
+@include('components.navbar')
 <main>
+
+    @include('components.success')
+
+    {{-- Product Card --}}
     <div class="card mb-4" style="padding: 1.5rem; margin: 2.5% auto; max-height: 75vh;">
         <div class="card-body">
             <div style="display: flex;">
@@ -17,26 +21,26 @@
                 </div>
                 <div>
                     <h3>{{ $product->product_name }}</h3>
-                    <form action="">
-                        @csrf
-                        <table style="margin: 0.5rem 0;">
+                    <table style="margin: 0.5rem 0;">
+                        <tr>
+                            <td class="label">Detail</td>
+                            <td>{{ $product->product_description }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Price</td>
+                            <td>IDR {{ $product->product_price }}</td>
+                        </tr>
+                        <form action="/cart-add/{{ $product->id }}" method="POST">
+                            @csrf
                             <tr>
-                                <td class="label">Detail</td>
-                                <td>{{ $product->product_description }}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Price</td>
-                                <td>IDR {{ $product->product_price }}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Qty</td>
-                                <td>
-                                    <input type="number" name="quantity" id="quantity">
-                                </td>
-                            </tr>
-                        </table>
-                        <input class="btn btn-outline-secondary" type="submit" value="Purchase">
-                    </form>
+                                    <td class="label">Qty</td>
+                                    <td>
+                                        <input type="number" name="quantity" id="quantity">
+                                    </td>
+                                </tr>
+                            </table>
+                            <input class="btn btn-outline-secondary" type="submit" value="Purchase">
+                        </form>
                 </div>
             </div>
         </div>
