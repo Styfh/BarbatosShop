@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
             "product_image" => "iphone14_pro_max.jpg",
             "product_name" => "IPhone 14 Pro Max",
             "product_description" => "The newest model in the iphone line of smartphones, coming with brand new long-awaited features",
-            "product_price" => 5000,
+            "product_price" => 13000000,
             "category_id" => 3
         ]);
 
