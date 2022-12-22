@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@extends('components.navbar')
 
 @section('title', 'Login')
 
@@ -8,6 +7,7 @@
 @endsection
 
 @section('main')
+@include('components.navbar')
 <main>
 
 

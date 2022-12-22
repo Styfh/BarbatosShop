@@ -90,4 +90,21 @@ class NavigationController extends Controller
             'product' => $product
         ]);
     }
+    public function getCartPage(){
+
+        $categories = Category::all();
+        $cart = session('cart');
+        $total = 0;
+
+        foreach($cart as $cartEntry){
+            $total += $cartEntry->total_price;
+        }
+
+        return view('cart', [
+            "categories" => $categories,
+            "cart" => $cart,
+            "total" => $total
+        ]);
+
+    }
 }

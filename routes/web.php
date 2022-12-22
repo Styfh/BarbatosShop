@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NavigationController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,7 @@ Route::get('/delete/{id}', [ProductController::class, 'deleteProduct']);
 Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
 
 Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);
+
+Route::get('/cart', [NavigationController::class, 'getCartPage']);
+Route::post('/cart-add/{product_id}', [ProductController::class, 'cartAdd']);
+Route::post('/cart-remove/{product_id}', [ProductController::class, 'cartDelete']);
