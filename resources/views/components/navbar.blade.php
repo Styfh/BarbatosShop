@@ -19,11 +19,32 @@
 
               </ul>
             </li>
-          </ul>
+            @auth
+                @if (Auth::User()->user_name == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manage">Manage Product</a>
+                    </li>
+                @endif
+            @endauth
+
+        </ul>
       </div>
       <div class="d-flex">
+        @auth
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::User()->user_name}}</a>
+                <ul class="dropdown-menu" style="right:90px">
+                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+        @else
           <a href="/login" class="nav-link mx-2">Login</a>
           <a href="/register" class="nav-link mx-2">Register</a>
+
+        @endauth
 
       </div>
     </div>
