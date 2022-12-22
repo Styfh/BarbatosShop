@@ -76,4 +76,9 @@ class UserController extends Controller
 
         return 'Login Failed';
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
 }

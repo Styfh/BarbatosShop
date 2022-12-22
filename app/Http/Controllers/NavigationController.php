@@ -63,6 +63,33 @@ class NavigationController extends Controller
         ]);
     }
 
+    public function getAddPage(){
+        $categories = Category::all();
+
+        return view('add', [
+            "categories" => $categories
+        ]);
+    }
+
+    public function getUpdatePage(Request $request){
+        $id = $request->route('id');
+        $categories = Category::all();
+        $product = Product::where('id', $id)->first();
+
+        return view('update', [
+            'categories' => $categories,
+            'product' => $product
+        ]);
+    }
+
+    public function getManagePage(){
+        $categories = Category::all();
+        $product = Product::all();
+        return view('manage', [
+            'categories' => $categories,
+            'product' => $product
+        ]);
+    }
     public function getCartPage(){
 
         $categories = Category::all();
