@@ -37,3 +37,4 @@ Route::get('/product/{product_id}', [NavigationController::class, 'getProductPag
 Route::get('/cart', [NavigationController::class, 'getCartPage']);
 Route::post('/cart-add/{product_id}', [ProductController::class, 'cartAdd']);
 Route::post('/cart-remove/{product_id}', [ProductController::class, 'cartDelete']);
+Route::post('/purchase', [ProductController::class, 'cartPurchase']);

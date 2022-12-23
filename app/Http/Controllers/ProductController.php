@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\CartProduct;
+use App\Models\TransactionDetail;
+use App\Models\TransactionHeader;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -111,8 +116,10 @@ class ProductController extends Controller{
             array_push($cart, $toAdd);
         }
 
-        // Update cart, flash success message
+        // Update cart
         session(['cart' => $cart]);
+
+        // Set success message
         $request->session()->flash('success', 'Item inserted to cart successfully');
 
         return redirect()->back();
@@ -131,10 +138,50 @@ class ProductController extends Controller{
             }
         }
 
-        // Update cart, flash success message
+        // Update cart
         session(['cart' => $cart]);
+
+        // Set success message
         $request->session()->flash('success', 'Item deleted from cart successfully');
 
         return redirect()->back();
+    }
+
+    public function cartPurchase(Request $request){
+
+        $id = Auth::user()->id;
+        $cart = session('cart');
+
+        // Push new header
+        $newPurchase = new TransactionHeader();
+        $newPurchase->transaction_date = Carbon::now()->toDateTimeString();
+        $newPurchase->customer_id = $id;
+        $newPurchase->push();
+
+        // Fetch id of the new header
+        $np_id = TransactionHeader::where('transaction_date', $newPurchase->transaction_date)
+            ->where('customer_id', $id)
+            ->first()
+            ->id;
+
+        // Create details with fetched id
+        foreach($cart as $cartEntry){
+
+            $newDetail = new TransactionDetail();
+            $newDetail->product_id = $cartEntry->product->id;
+            $newDetail->transaction_id = $np_id;
+            $newDetail->quantity = $cartEntry->quantity;
+            $newDetail->push();
+
+        }
+
+        // Empty cart
+        $request->session()->forget('cart');
+
+        // Set success message
+        $request->session()->flash('success', 'Purchased items successfully');
+
+        return redirect('/');
+
     }
 }
