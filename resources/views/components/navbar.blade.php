@@ -39,8 +39,8 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::User()->user_name}}</a>
-                <ul class="dropdown-menu" style="right:90px">
-                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/profile/{{Auth::User()->id}}">Profile</a></li>
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </li>

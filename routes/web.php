@@ -29,6 +29,7 @@ Route::post('/add', [ProductController::class, 'addProduct']);
 Route::get('/update/{id}', [NavigationController::class, 'getUpdatePage']);
 Route::post('/update/{id}', [ProductController::class, 'updateProduct']);
 Route::get('/delete/{id}', [ProductController::class, 'deleteProduct']);
+Route::get('/profile/{id}', [NavigationController::class, 'getProfilePage']);
 Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
 
 Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);

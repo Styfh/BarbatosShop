@@ -11,15 +11,15 @@
 <main>
     @csrf
     <nav style="width:75rem;">
-        <form class="form-inline d-flex" style="justify-content: space-between">
+        <form action="/manage" method="GET" class="form-inline d-flex" style="justify-content: space-between">
           <div class="input-group" style="width: 15rem; height:1rem;">
-            <input type="text" class="form-control" placeholder="Product Name" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Product Name">
             <div class="input-group-prepend">
-                <button class="btn btn-secondary" type="button" id="search-btn">
+                <button class="btn btn-secondary" type="submit" id="search" value="search">
                     <img src="{{ asset('images/search_icon.png') }}" style="width: 2rem; height: 2rem">
                 </button>
             </div>
-          </div>
+        </div>
             <div>
                 <a class="btn btn-secondary" type="submit" href="/add" style="width: 8rem">Add Product
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -31,7 +31,7 @@
     </nav>
 
     <div>
-        @foreach ($product as $product)
+        @foreach ($products as $product)
             <div class="card flex-row mx-auto my-3" style="width: 75rem">
                     <div class="card-header" style="padding: 0;">
                         <img src="{{ asset('storage/product_images/'.$product->product_image)}}" style="width: 170px; height: 150px">
@@ -59,6 +59,6 @@
             </div>
         @endforeach
     </div>
-
+    {{$products->links()}}
 </main>
 @endsection
