@@ -38,9 +38,12 @@
         <div class="mx-3 my-auto">
             <p class="my-auto">Final Total: IDR {{ $total }}</p>
         </div>
-        <div class="mx-3 my-auto">
-            <a href="" class="btn btn-outline-success my-auto">Purchase</a>
-        </div>
+        <form action="/purchase" method="POST">
+            @csrf
+            <div class="mx-3 my-auto">
+                <input type="submit" value="Purchase" class="btn btn-outline-success my-auto">
+            </div>
+        </form>
     </div>
 </footer>
 @endsection

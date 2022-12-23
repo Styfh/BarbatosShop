@@ -15,7 +15,7 @@ class CreateTransactionHeadersTable extends Migration
     {
         Schema::create('transaction_headers', function (Blueprint $table) {
             $table->id();
-            $table->date('transaction_date');
+            $table->dateTime('transaction_date');
             $table->unsignedBigInteger('customer_id');
             $table->timestamps();
 
