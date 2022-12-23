@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NavigationController extends Controller
@@ -82,12 +83,24 @@ class NavigationController extends Controller
         ]);
     }
 
-    public function getManagePage(){
+    public function getProfilePage(Request $request){
+        $id = $request->route('id');
         $categories = Category::all();
-        $product = Product::all();
+        $user = User::where('id', $id)->first();
+
+        return view('profile', [
+            'categories' => $categories,
+            'user' => $user,
+        ]);
+    }
+
+    public function getManagePage(Request $request){
+        $categories = Category::all();
+        $search_query = $request->query('search');
+        $products = Product::where('product_name','LIKE',"%$search_query%")->paginate(10)->appends(['search'=>$search_query]);
         return view('manage', [
             'categories' => $categories,
-            'product' => $product
+            'products' => $products
         ]);
     }
     public function getCartPage(){

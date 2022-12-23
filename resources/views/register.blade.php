@@ -1,13 +1,16 @@
 @extends('layouts.master')
+
+@section('title', 'Register')
+
 @extends('components.navbar')
 
 @section('style')
-<link href="{{asset('css/login.css')}}" rel="stylesheet">
+<link href="{{asset('css/index.css')}}" rel="stylesheet">
 @endsection
 
 @section('main')
 <main>
-    <div class="card" style="width: 36rem;">
+    <div class="card" style="width: 36rem; margin-left: 18rem">
         <div class="card-header text-center">
             Register
         </div>
@@ -45,21 +48,24 @@
 
                         <div class="form-group" >
                             <label for="user_gender">Gender</label><br>
-                                <input type="radio" class="gender" name="user_gender" id="female" value="female">
-                                <label class="gender" for="user_gender">Female</label>
-
-                                <input type="radio" class="gender" name="user_gender" id="male" value="male">
-                                <label class="gender" for="user_gender">Male</label>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="user_gender" id="female" value="Female">
+                                <label class="form-check-label" for="user_gender">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="user_gender" id="male" value="Male">
+                                <label class="form-check-label" for="user_gender">Male</label>
+                            </div><br>
                         </div>
 
                         <div class="form-group">
-                            <label for="user_dob">Date of Birth</label><br>
-                            <input type="date" name="user_dob" placeholder="mm/dd/yyyy"><br>
+                            <br><label for="user_dob">Date of Birth</label><br>
+                            <input class="form-control" type="date" name="user_dob" placeholder="mm/dd/yyyy"><br>
                         </div>
 
                         <div class="form-group">
                         <label for="user_country">Country</label><br>
-                        <select name="user_country" class="form-control" id="country">
+                        <select name="user_country" class="form-select form-select-sm" aria-label=".form-select-sm example" id="country">
                             <option value="0" label="Choose a country" selected="selected"></option>
                             <optgroup id="country-Africa" label="Africa">
                                 <option value="DZ" label="Algeria">Algeria</option>
@@ -323,13 +329,13 @@
                                 <option value="VU" label="Vanuatu">Vanuatu</option>
                                 <option value="WF" label="Wallis and Futuna">Wallis and Futuna</option>
                             </optgroup>
-                        </select>
+                        </select><br>
                         </div>
 
-                    <button type="submit" class="btn btn-light" id="submit">Submit</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="submit" style="position: relative; left: 25vh; margin-bottom: 0.5rem; width: 10rem;">Submit</button>
                 </div>
             </form>
-            <p class="card-text text-center">Have an account? <a href="/login">Login here</a></p>
+            <p class="card-text text-center">Have an account? <a href="/login">Login here</a></p><br>
         </div>
     </main>
 @endsection
