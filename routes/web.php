@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ Route::get('/category/{category_id}', [NavigationController::class, 'getCategory
 Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);
 
 Route::get('/cart', [NavigationController::class, 'getCartPage']);
-Route::post('/cart-add/{product_id}', [ProductController::class, 'cartAdd']);
-Route::post('/cart-remove/{product_id}', [ProductController::class, 'cartDelete']);
-Route::post('/purchase', [ProductController::class, 'cartPurchase']);
+Route::post('/cart-add/{product_id}', [TransactionController::class, 'cartAdd']);
+Route::post('/cart-remove/{product_id}', [TransactionController::class, 'cartDelete']);
+Route::post('/purchase', [TransactionController::class, 'cartPurchase']);
+
+Route::get('/history', [NavigationController::class, 'getHistoryPage']);

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\TransactionHeader;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NavigationController extends Controller
 {
@@ -119,5 +121,17 @@ class NavigationController extends Controller
             "total" => $total
         ]);
 
+    }
+
+    public function getHistoryPage(){
+
+        $id = Auth::user()->id;
+        $categories = Category::all();
+        $transactions = TransactionHeader::where('customer_id', $id)->get();
+
+        return view('history', [
+            'categories' => $categories,
+            'transactions' => $transactions
+        ]);
     }
 }
