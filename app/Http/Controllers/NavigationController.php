@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class NavigationController extends Controller
 {
 
-    public function getIndexPage(){
+    public function getIndexPage(Request $request){
+        $search_query = $request->query('search');
+
         $categories = Category::all();
 
         return view('home', [
             "categories" => $categories,
+            "search_query" => $search_query
         ]);
     }
 
