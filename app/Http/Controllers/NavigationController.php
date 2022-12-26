@@ -148,6 +148,5 @@ class NavigationController extends Controller
             'input' => $search_query
         ]);
 
-
     }
 }
