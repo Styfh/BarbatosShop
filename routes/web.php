@@ -41,3 +41,5 @@ Route::post('/cart-remove/{product_id}', [TransactionController::class, 'cartDel
 Route::post('/purchase', [TransactionController::class, 'cartPurchase']);
 
 Route::get('/history', [NavigationController::class, 'getHistoryPage']);
+
+Route::get('/search', [NavigationController::class, 'getSearchPage']);

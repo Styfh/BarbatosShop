@@ -2,20 +2,16 @@
 
 @section('title', 'Home')
 
-@section('style')
-<link href="{{asset('css/index.css')}}" rel="stylesheet">
-@endsection
-
 @section('main')
 @include('components.navbar')
 <main>
 
 
-    <form action="/">
+    <form action="/search" method="GET">
         @csrf
         <div class="input-group mb-4">
             <input type="text" class="form-control" name="search">
-            <button class="btn btn-secondary" type="button" id="search-btn">
+            <button class="btn btn-secondary" type="submit" id="search-btn">
                 <img src="{{ asset('images/search_icon.png') }}" style="width: 2rem; height: 2rem">
             </button>
         </div>
@@ -24,12 +20,9 @@
     @foreach ($categories as $category)
 
     @php
-        $products = $category->product()
-            ->where('product_name', 'LIKE', "%$search_query%")
-            ->get();
+        $products = $category->product;
     @endphp
 
-    @if(!$products->isEmpty())
     <div class="card mb-4">
         <div class="card-header">
             {{ $category->category_name }}
@@ -42,7 +35,6 @@
             @endforeach
         </div>
     </div>
-    @endif
 
     @endforeach
 
