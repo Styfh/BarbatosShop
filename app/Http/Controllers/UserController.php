@@ -39,8 +39,16 @@ class UserController extends Controller
             'user_country' => $request->user_country
         ]);
 
+        $credentials = [
+            "user_email" => $request->user_email,
+            "password" => $request->password
+        ];
 
-        return redirect('login');
+        if(Auth::attempt($credentials)){
+            return redirect('/');
+        }
+
+        return redirect('/login');
     }
 
     public function getLoginPage(){

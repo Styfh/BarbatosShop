@@ -13,13 +13,11 @@ class NavigationController extends Controller
 {
 
     public function getIndexPage(Request $request){
-        $search_query = $request->query('search');
 
         $categories = Category::all();
 
         return view('home', [
             "categories" => $categories,
-            "search_query" => $search_query
         ]);
     }
 
@@ -136,5 +134,19 @@ class NavigationController extends Controller
             'categories' => $categories,
             'transactions' => $transactions
         ]);
+    }
+
+    public function getSearchPage(Request $request){
+
+        $search_query = $request->query('search');
+        $categories = Category::all();
+        $products = Product::where('product_name', 'LIKE', "%$search_query%")->paginate(10);
+
+        return view('search', [
+            'categories' => $categories,
+            'products' => $products,
+            'input' => $search_query
+        ]);
+
     }
 }
