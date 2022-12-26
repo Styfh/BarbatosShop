@@ -6,11 +6,10 @@
 @include('components.navbar')
 <main>
 
-
     <form action="/search" method="GET">
         @csrf
         <div class="input-group mb-4">
-            <input type="text" class="form-control" name="search">
+            <input type="text" class="form-control" name="search"">
             <button class="btn btn-secondary" type="submit" id="search-btn">
                 <img src="{{ asset('images/search_icon.png') }}" style="width: 2rem; height: 2rem">
             </button>

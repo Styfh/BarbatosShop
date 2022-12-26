@@ -144,7 +144,8 @@ class NavigationController extends Controller
 
         return view('search', [
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
+            'input' => $search_query
         ]);
 
 
