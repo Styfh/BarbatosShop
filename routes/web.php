@@ -18,28 +18,35 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [NavigationController::class, 'getIndexPage']);
-Route::get('/login', [NavigationController::class, 'getLoginPage']);
-Route::get('/register', [NavigationController::class, 'getRegisterPage']);
-
-Route::post('/register/action', [UserController::class, 'actionregister']);
-Route::post('/login', [UserController::class, 'login']);
-Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/manage', [NavigationController::class, 'getManagePage']);
-Route::get('/add', [NavigationController::class, 'getAddPage']);
-Route::post('/add', [ProductController::class, 'addProduct']);
-Route::get('/update/{id}', [NavigationController::class, 'getUpdatePage']);
-Route::post('/update/{id}', [ProductController::class, 'updateProduct']);
-Route::get('/delete/{id}', [ProductController::class, 'deleteProduct']);
-Route::get('/profile/{id}', [NavigationController::class, 'getProfilePage']);
+Route::get('/search', [NavigationController::class, 'getSearchPage']);
 Route::get('/category/{category_id}', [NavigationController::class, 'getCategoryPage']);
-
 Route::get('/product/{product_id}', [NavigationController::class, 'getProductPage']);
 
-Route::get('/cart', [NavigationController::class, 'getCartPage']);
-Route::post('/cart-add/{product_id}', [TransactionController::class, 'cartAdd']);
-Route::post('/cart-remove/{product_id}', [TransactionController::class, 'cartDelete']);
-Route::post('/purchase', [TransactionController::class, 'cartPurchase']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/logout', [UserController::class, 'logout']);
+    Route::get('/profile/{id}', [NavigationController::class, 'getProfilePage']);
+});
 
-Route::get('/history', [NavigationController::class, 'getHistoryPage']);
+Route::middleware(['role.guest'])->group(function(){
+    Route::get('/login', [NavigationController::class, 'getLoginPage']);
+    Route::post('/login', [UserController::class, 'login']);
+    Route::get('/register', [NavigationController::class, 'getRegisterPage']);
+    Route::post('/register', [UserController::class, 'register']);
+});
 
-Route::get('/search', [NavigationController::class, 'getSearchPage']);
+Route::middleware(['role.customer'])->group(function(){
+    Route::get('/cart', [NavigationController::class, 'getCartPage']);
+    Route::post('/cart-add/{product_id}', [TransactionController::class, 'cartAdd']);
+    Route::post('/cart-remove/{product_id}', [TransactionController::class, 'cartDelete']);
+    Route::post('/purchase', [TransactionController::class, 'cartPurchase']);
+    Route::get('/history', [NavigationController::class, 'getHistoryPage']);
+});
+
+Route::middleware(['role.admin'])->group(function(){
+    Route::get('/manage', [NavigationController::class, 'getManagePage']);
+    Route::get('/add', [NavigationController::class, 'getAddPage']);
+    Route::post('/add', [ProductController::class, 'addProduct']);
+    Route::get('/update/{id}', [NavigationController::class, 'getUpdatePage']);
+    Route::post('/update/{id}', [ProductController::class, 'updateProduct']);
+    Route::get('/delete/{id}', [ProductController::class, 'deleteProduct']);
+});

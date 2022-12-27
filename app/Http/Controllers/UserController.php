@@ -18,8 +18,9 @@ class UserController extends Controller
         return view('register');
     }
 
-    public function actionregister(Request $request)
+    public function register(Request $request)
     {
+
         $validated = $request->validate([
             'user_name' => 'required|min:5',
             'user_email' => 'required|email|unique:users,user_email',
@@ -36,7 +37,8 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'user_gender' => $request->user_gender,
             'user_dob' => $request->user_dob,
-            'user_country' => $request->user_country
+            'user_country' => $request->user_country,
+            'user_role' => 'customer'
         ]);
 
         $credentials = [
@@ -82,7 +84,7 @@ class UserController extends Controller
             }
         }
 
-        return 'Login Failed';
+        return redirect('/login');
     }
 
     public function logout(){
