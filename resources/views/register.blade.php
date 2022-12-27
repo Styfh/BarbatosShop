@@ -14,15 +14,7 @@
         <div class="card-header text-center">
             Register
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('components.error')
         <form action="/register" method="POST">
             @csrf
                     <div class="card-body">

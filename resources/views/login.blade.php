@@ -16,15 +16,7 @@
         <div class="card-header text-center">
             Login
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('components.error')
         <div class="card-body">
 
             <form action="/login" method="post">
