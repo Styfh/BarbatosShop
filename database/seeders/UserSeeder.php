@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             "password" => Hash::make('admin123'),
             "user_gender" => "NA",
             "user_dob" => "2000-01-01",
-            "user_country" => "ID"
+            "user_country" => "ID",
+            "user_role" => "admin"
         ]);
     }
 }

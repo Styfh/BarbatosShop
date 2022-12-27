@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/register/action" method="POST" enctype="multipart/form-data">
+        <form action="/register" method="POST">
             @csrf
                     <div class="card-body">
                         <div class="form-group">

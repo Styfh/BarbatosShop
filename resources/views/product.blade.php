@@ -30,19 +30,20 @@
                             <td class="label">Price</td>
                             <td>IDR {{ $product->product_price }}</td>
                         </tr>
-                        @auth
-                            <form action="/cart-add/{{ $product->id }}" method="POST">
-                                @csrf
-                                <tr>
-                                        <td class="label">Qty</td>
-                                        <td>
-                                            <input type="number" name="quantity" id="quantity">
-                                        </td>
-                                    </tr>
-                                </table>
-                                <input class="btn btn-outline-secondary" type="submit" value="Purchase">
-                            </form>
-                        @endauth
+
+                        @if(Auth::user()->user_role == 'customer')
+                        <form action="/cart-add/{{ $product->id }}" method="POST">
+                            @csrf
+                            <tr>
+                                    <td class="label">Qty</td>
+                                    <td>
+                                        <input type="number" name="quantity" id="quantity">
+                                    </td>
+                                </tr>
+                            </table>
+                            <input class="btn btn-outline-secondary" type="submit" value="Purchase">
+                        </form>
+                        @endif
 
                 </div>
             </div>
