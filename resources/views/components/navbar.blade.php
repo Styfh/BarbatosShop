@@ -18,7 +18,7 @@
               </ul>
             </li>
             @auth
-                @if (Auth::User()->user_name == 'admin')
+                @if (Auth::User()->user_role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="/manage">Manage Product</a>
                     </li>
