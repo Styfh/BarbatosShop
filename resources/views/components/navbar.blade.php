@@ -41,7 +41,9 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::User()->user_name}}</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/profile/{{Auth::User()->id}}">Profile</a></li>
+                    @if (Auth::User()->user_role == 'customer')
                     <li><a class="dropdown-item" href="/history">History</a></li>
+                    @endif
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </li>

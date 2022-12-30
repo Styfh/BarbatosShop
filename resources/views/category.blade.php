@@ -11,9 +11,13 @@
             {{ $category->category_name }}
         </div>
         <div class="card-body">
-            @foreach ($products as $product)
-                @include('components.product_card')
-            @endforeach
+            <div class="row row-cols-5 mx-auto">
+                @foreach ($products as $product)
+                <div class="col mb-3">
+                    @include('components.product_card')
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
