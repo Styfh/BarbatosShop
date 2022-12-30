@@ -14,13 +14,15 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['category_name' => 'Beauty']);
-        Category::create(['category_name' => 'Books']);
-        Category::create(['category_name' => 'Electronics']);
-        Category::create(['category_name' => 'Fashion']);
-        Category::create(['category_name' => 'Health']);
-        Category::create(['category_name' => 'Home Appliances']);
-        Category::create(['category_name' => 'Office and Stationery']);
-        Category::create(['category_name' => 'Sport']);
+        Category::insert([
+            ['category_name' => 'Beauty'],
+            ['category_name' => 'Books'],
+            ['category_name' => 'Electronics'],
+            ['category_name' => 'Fashion'],
+            ['category_name' => 'Health'],
+            ['category_name' => 'Home Appliances'],
+            ['category_name' => 'Office and Stationery'],
+            ['category_name' => 'Sport']
+        ]);
     }
 }
