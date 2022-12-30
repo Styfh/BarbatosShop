@@ -41,12 +41,7 @@ class UserController extends Controller
             'user_role' => 'customer'
         ]);
 
-        $credentials = [
-            "user_email" => $request->user_email,
-            "password" => $request->password
-        ];
-
-        if(Auth::attempt($credentials)){
+        if(Auth::login($user)){
             return redirect('/');
         }
 
