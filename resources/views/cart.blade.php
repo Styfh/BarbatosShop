@@ -14,7 +14,7 @@
         <div class="card-block" style="padding: 1rem;">
           <h4>{{ $cartEntry->product->product_name }}</h4>
           <p class="card-text">Quantity: {{ $cartEntry->quantity }}</p>
-          <p class="card-text">Total Price: IDR {{ $cartEntry->total_price }}</p>
+          <p class="card-text">Total Price: IDR {{ $cartEntry->product->product_price * $cartEntry->quantity }}</p>
         </div>
 
         <div style="margin: 0 0 0 auto;">
@@ -29,6 +29,11 @@
             </form>
         </div>
     </div>
+
+    @php
+        $total += $cartEntry->product->product_price * $cartEntry->quantity;
+    @endphp
+
     @endforeach
 
 
