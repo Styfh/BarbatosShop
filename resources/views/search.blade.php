@@ -10,15 +10,12 @@
 
     <form action="/search" method="GET">
         @csrf
-        <form action="/search" method="GET">
-            @csrf
-            <div class="input-group mb-4">
-                <input type="text" class="form-control" name="search" value="{{ $input }}">
-                <button class="btn btn-secondary" type="submit" id="search-btn">
-                    <img src="{{ asset('images/search_icon.png') }}" style="width: 2rem; height: 2rem">
-                </button>
-            </div>
-        </form>
+        <div class="input-group mb-4">
+            <input type="text" class="form-control" name="search" value="{{ $input }}">
+            <button class="btn btn-secondary" type="submit" id="search-btn">
+                <img src="{{ asset('images/search_icon.png') }}" style="width: 2rem; height: 2rem">
+            </button>
+        </div>
     </form>
 
     <div class="card mb-4">
