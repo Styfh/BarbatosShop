@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartProduct;
 use App\Models\Product;
 use App\Models\TransactionDetail;
 use App\Models\TransactionHeader;
@@ -42,10 +41,9 @@ class TransactionController extends Controller
 
         // If it doesn't exist in cart yet, add it as new item
         if(!$flag){
-            $toAdd = new CartProduct();
-            $toAdd->product = $product;
+            $toAdd = new TransactionDetail();
+            $toAdd->product_id = $id;
             $toAdd->quantity = $quantity;
-            $toAdd->total_price = $product->product_price * $quantity;
 
             array_push($cart, $toAdd);
         }
@@ -83,7 +81,7 @@ class TransactionController extends Controller
 
     public function cartPurchase(Request $request){
 
-        $id = Auth::user()->id;
+        $id = Auth::id();
         $cart = session('cart');
 
         // Push new header
@@ -101,11 +99,8 @@ class TransactionController extends Controller
         // Create details with fetched id
         foreach($cart as $cartEntry){
 
-            $newDetail = new TransactionDetail();
-            $newDetail->product_id = $cartEntry->product->id;
-            $newDetail->transaction_id = $np_id;
-            $newDetail->quantity = $cartEntry->quantity;
-            $newDetail->push();
+            $cartEntry->transaction_id = $np_id;
+            $cartEntry->push();
 
         }
 

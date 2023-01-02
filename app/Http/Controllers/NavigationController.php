@@ -126,7 +126,7 @@ class NavigationController extends Controller
 
     public function getHistoryPage(){
 
-        $id = Auth::user()->id;
+        $id = Auth::id();
         $categories = Category::all();
         $transactions = TransactionHeader::where('customer_id', $id)->get();
 
