@@ -11,6 +11,7 @@
 <main>
 
     @include('components.success')
+    @include('components.error')
 
     {{-- Product Card --}}
     <div class="card mb-4" style="padding: 1.5rem; margin: 2.5% auto; max-height: 75vh;">

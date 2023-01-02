@@ -15,8 +15,13 @@ class TransactionController extends Controller
 
     public function cartAdd(Request $request){
 
+        $request->validate([
+            "quantity" => "required|min:1"
+        ]);
+
         $id = $request->route('product_id');
         $quantity = $request->quantity;
+
 
         // Fetch cart from session, new if empty
         $cart = array();
