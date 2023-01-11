@@ -5,6 +5,7 @@
 <main>
 
     @include('components.success')
+    @include('components.error')
 
     @foreach ($cart as $cartEntry)
     <div class="card flex-row mx-auto my-4" style="width: 42rem; padding: 0.5rem;">

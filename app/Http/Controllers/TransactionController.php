@@ -89,6 +89,13 @@ class TransactionController extends Controller
         $id = Auth::id();
         $cart = session('cart');
 
+        // Cart empty validation
+        if(sizeof($cart) == 0){
+            return redirect()->back()->withErrors([
+                'cartEmpty' => 'Cart is empty, cannot purchase.'
+            ]);
+        }
+
         // Push new header
         $newPurchase = new TransactionHeader();
         $newPurchase->transaction_date = Carbon::now()->toDateTimeString();
